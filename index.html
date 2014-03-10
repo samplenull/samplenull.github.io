@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Samplenull.github.io : blog" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Samplenull.github.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/samplenull">View on GitHub</a>
+
+          <h1 id="project_title">Samplenull.github.io</h1>
+          <h2 id="project_tagline">blog</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="welcome-to-samples-and-nulls" class="anchor" href="#welcome-to-samples-and-nulls"><span class="octicon octicon-link"></span></a>Welcome to Samples and nulls</h3>
+
+<h1>
+<a name="first-thought" class="anchor" href="#first-thought"><span class="octicon octicon-link"></span></a>First thought</h1>
+
+<h2>
+<a name="minor-thoughts-will-be-here" class="anchor" href="#minor-thoughts-will-be-here"><span class="octicon octicon-link"></span></a>minor thoughts will be here</h2>
+
+<h3>
+<a name="very-little-dreaming-about" class="anchor" href="#very-little-dreaming-about"><span class="octicon octicon-link"></span></a>very little dreaming about</h3>
+
+<div class="highlight highlight-php"><pre><span class="k">function</span> <span class="nf">findOneByRandomize</span><span class="p">(</span><span class="nv">$position</span><span class="p">){</span>
+<span class="o">+</span>        <span class="nv">$className</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getClassName</span><span class="p">();</span>
+<span class="o">+</span>        <span class="nv">$position</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$position</span><span class="p">;</span>
+<span class="o">+</span>        <span class="nv">$rsm</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Doctrine\ORM\Query\ResultSetMapping</span><span class="p">;</span>
+<span class="o">+</span>        <span class="nv">$rsm</span><span class="o">-&gt;</span><span class="na">addEntityResult</span><span class="p">(</span> <span class="nv">$className</span><span class="p">,</span> <span class="s1">'self'</span><span class="p">);</span>
+<span class="o">+</span>        <span class="k">foreach</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getClassMetadata</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getFieldNames</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$field</span> <span class="p">)</span>
+<span class="o">+</span>            <span class="nv">$rsm</span><span class="o">-&gt;</span><span class="na">addFieldResult</span><span class="p">(</span> <span class="s1">'self'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getClassMetadata</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getColumnName</span><span class="p">(</span> <span class="nv">$field</span> <span class="p">),</span> <span class="nv">$field</span> <span class="p">);</span>
+<span class="o">+</span>
+<span class="o">+</span>        <span class="nv">$nameParts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span><span class="nv">$className</span><span class="p">);</span>
+<span class="o">+</span>        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getEntityManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createNativeQuery</span><span class="p">(</span>
+<span class="o">+</span>                <span class="s1">'SELECT * FROM banner self WHERE self.type = \''</span><span class="o">.</span><span class="nx">strtolower</span><span class="p">(</span> <span class="nb">end</span><span class="p">(</span> <span class="nv">$nameParts</span> <span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="s1">'\' AND position = '</span><span class="o">.</span>
+<span class="o">+</span>                    <span class="nv">$position</span> <span class="o">.</span><span class="s1">' AND self.trash=0 ORDER BY RAND() LIMIT 1'</span><span class="p">,</span>
+<span class="o">+</span>                <span class="nv">$rsm</span>
+<span class="o">+</span>            <span class="p">);</span>
+</pre></div>
+
+<blockquote>
+<p>This is a nice quote will be here</p>
+</blockquote>
+
+<p><strong>And this very bold text</strong></p>
+
+<p>Just a text here... Just a text here...Just a text here...Just a text here...
+Just a text here...Just a text here...Just a text here...Just a text here...</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
